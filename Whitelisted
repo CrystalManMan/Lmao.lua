@@ -1,0 +1,8 @@
+local client = game:GetService("RbxAnalyticsService"):GetClientId();
+local Allowed = {"6EA5DD65-1CB3-4507-9A33-1E6ED922E125"}
+
+for i, v in ipairs(blacklist) do 
+	if v == client then 
+		_G.Whitelisted = true
+	end
+end
