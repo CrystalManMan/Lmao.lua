@@ -35,14 +35,14 @@ end))
 
 -- This User Interface Library is brought to you by Solaris Software.
 local Solaris = Instance.new("ScreenGui")
-Solaris.Name = tostring(math.random(0, 9)..math.random(0, 9)..math.random(0, 9)..math.random(0, 9)..math.random(0, 9)..math.random(0, 9)..math.random(0, 9)..math.random(0, 9)..math.random(0, 9)..math.random(0, 9)..math.random(0, 9).."_Secretkey101")
+Solaris.Name = game:GetService("HttpService"):GenerateGUID()
 Solaris.Parent = game.CoreGui
 Solaris.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 
 
 local NotificationHolder = Instance.new("ScreenGui")
-NotificationHolder.Name = "notiHolder"
+NotificationHolder.Name = game:GetService("HttpService"):GenerateGUID()
 NotificationHolder.Parent = game.CoreGui
 NotificationHolder.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
@@ -66,7 +66,7 @@ end
 
 
 
-local NotificationFrame = game:GetObjects("rbxassetid://6924028278")[1]
+local Notification = game:GetObjects("rbxassetid://6924028278")[1]
 NotificationFrame.ZIndex = 4
 NotificationFrame.Parent = NotificationHolder
 script = NotificationFrame.NotifScript
@@ -328,7 +328,7 @@ function SolarisLib:New(Config)
         end)
 
         local Sound = Instance.new("Sound")
-        Sound.Name = "Sound"
+        Sound.Name = game:GetService("HttpService"):GenerateGUID()
         Sound.Parent = MusicFrame
         Sound.Volume = 3
         Sound:Stop()
