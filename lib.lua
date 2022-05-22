@@ -1,10 +1,45 @@
---https://raw.githubusercontent.com/Stebulous/solaris-ui-lib/main/source.lua
+for _, gui in pairs(game:GetService("CoreGui").RobloxGui:GetChildren()) do
+   if gui:IsA("ScreenGui") and string.match(gui.Name, "_Secretkey101") then
+       gui:Destroy()
+   end
+end
+
+for _, gui in pairs(game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):GetChildren()) do
+   if gui:IsA("ScreenGui") and string.match(gui.Name, "_Secretkey101") then
+       gui:Destroy()
+   end
+end
+
+if not game.IsLoaded(game) then 
+    game.Loaded.Wait(game.Loaded)
+end
+
+local lower = string.lower
+
+local namecall = nil
+namecall = hookmetamethod(game, "__namecall", newcclosure(function(self, ...)
+    local namecall_method, parameters = (getnamecallmethod or get_namecall_method)(), {...};
+    
+    if lower(namecall_method) == "preloadasync" and self.Name == "ContentProvider" then 
+        return 
+    end
+    
+    return namecall(self, ...);
+end))
+
+
+local gcinfo_hook = nil 
+gcinfo_hook = replaceclosure(gcinfo, newcclosure(function()
+    return math.random(2000, 5000)
+end))
 
 -- This User Interface Library is brought to you by Solaris Software.
 local Solaris = Instance.new("ScreenGui")
-Solaris.Name = "dosage's solaris gui"
+Solaris.Name = tostring(math.random(0, 9)..math.random(0, 9)..math.random(0, 9)..math.random(0, 9)..math.random(0, 9)..math.random(0, 9)..math.random(0, 9)..math.random(0, 9)..math.random(0, 9)..math.random(0, 9)..math.random(0, 9).."_Secretkey101")
 Solaris.Parent = game.CoreGui
 Solaris.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+
 
 local NotificationHolder = Instance.new("ScreenGui")
 NotificationHolder.Name = "notiHolder"
